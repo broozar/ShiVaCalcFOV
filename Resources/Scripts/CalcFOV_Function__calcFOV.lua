@@ -46,7 +46,8 @@ function CalcFOV._calcFOV ( nMonitorAspectRatio, nScreenDiameter, sUnitDiameter,
     nScreenDiameter = nScreenDiameter * this._conversionFactor ( sUnitDiameter )
     nDistanceToScreen = nDistanceToScreen * this._conversionFactor ( sUnitDistance )
     
-    _FOV = 2 *  ( 90 -  math.abs (  math.atan ( 2*nDistanceToScreen / math.sqrt ( (nScreenDiameter*nScreenDiameter) / (1 + (1/(nMonitorAspectRatio*nMonitorAspectRatio)) ) ) )  ) )
+    -- formula NOV 2017: using vertical FOV
+    _FOV = math.abs ( math.atan ( ( math.sqrt ( math.pow ( nScreenDiameter, 2 ) / ( math.pow ( nMonitorAspectRatio, 2 ) + 1 ) ) ) / ( 2 * nDistanceToScreen ) ) )
     
     this.FOV ( _FOV )
     return _FOV

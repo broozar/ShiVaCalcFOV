@@ -23,9 +23,9 @@ function CalcFOV._conversionFactor ( sUnitIdentifier )
     
     
     if      table.contains ( suCm, sUnitIdentifier ) then factor = 1
+    elseif  table.contains ( suIn, sUnitIdentifier ) then factor = 2.54
     elseif  table.contains ( suM,  sUnitIdentifier ) then factor = 100
     elseif  table.contains ( suF,  sUnitIdentifier ) then factor = 30.48
-    elseif  table.contains ( suIn, sUnitIdentifier ) then factor = 2.54
     
     else log.warning ( "FOV: Unknown unit identifier string! Assuming centimeters." )
     end
